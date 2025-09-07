@@ -10,9 +10,7 @@
 </head>
 <body class="bg-[#F0FDF4]">
     <header>
-
         <!-- nav bar -->
-
         <nav class="bg-[#15803D] text-white">
             <div class="flex justify-between items-center w-13/14 md:w-12/14 mx-auto py-3 md:py-6">
                 <h4 class="font-semibold text-2xl md:text-3xl">Green Earth</h4>
@@ -21,7 +19,7 @@
                     <span>Gallery</span>
                     <span>Plant a Tree</span>
                 </div>
-                <button class="text-normal md:text-lg font-semibold bg-[#FACC15] text-[#15803D] px-5 py-2 rounded-3xl">Plant a Tree</button>
+                <button class="text-normal md:text-lg font-semibold bg-[#FACC15] text-[#15803D] px-5 py-1 md:py-2 rounded-3xl">Plant a Tree</button>
             </div>
         </nav>
         
@@ -34,7 +32,7 @@
                 <h2 class="font-bold text-3xl md:text-5xl">Plant a Tree, Grow a Future</h2>
                 <p class="mt-3 mb-6">Join our mission to plant 1 million trees and make the Earth greener for future
                 generations.</p>
-                <button class="text-normal md:text-lg font-semibold bg-[#FACC15] text-[#15803D] px-5 py-2 rounded-3xl">Get Involved</button>
+                <button class="text-normal md:text-lg font-semibold bg-[#FACC15] text-[#15803D] px-5 p-1 md:py-2 rounded-3xl">Get Involved</button>
             </div>
             <div>
                 <img class="hidden md:block" src="./assets/hero-leaf2.png" alt="">
@@ -42,6 +40,7 @@
          </div>
     </header>
 
+    <!-- main section -->
     <main>
 
         <!-- about section -->
@@ -59,6 +58,57 @@
                 </div>
             </div>
          </section>
+
+         <!-- our impact section -->
+          <section class="bg-[#CFF0DC]">
+            <div class="w-12/14 mx-auto text-center py-15 md:py-20">
+                <h2 class="font-semibold text-2xl md:text-4xl mb-8">Our Impact</h2>
+                <div class="flex flex-col md:flex-row justify-between gap-6 md:gap-12">
+                    <div class="bg-white p-10 flex-1 rounded-xl space-y-3">
+                        <h2 class="text-[#15803D] text-3xl font-semibold">500K+</h2>
+                        <p>Trees Planted</p>
+                    </div>
+                    <div class="bg-white p-10 flex-1 rounded-xl space-y-3" >
+                        <h2 class="text-[#15803D] text-3xl font-semibold">120+</h2>
+                        <p>Communities Involved</p>
+                    </div>
+                    <div class="bg-white p-10 flex-1 rounded-xl space-y-3">
+                        <h2 class="text-[#15803D] text-3xl font-semibold">30+</h2>
+                        <p>Countries Reached</p>
+                    </div>
+                </div>
+            </div>
+          </section>
+
+          <!-- plant a tree today section -->
+           <section class="bg-[#166534] py-15 md:py-20">
+            <h2 class="font-semibold text-2xl md:text-4xl mb-8 text-center text-white">Plant a Tree Today</h2>
+            <div class="flex justify-center items-center">
+                <form class="w-[650px] bg-[#15803D] p-5 md:p-10 rounded-xl" action="">
+                    <input class="w-full p-2 md:p-3 text-md md:text-lg rounded-lg bg-white" type="text" placeholder="Your Name">
+                    <br>
+                    <input class="w-full p-2 md:p-3 text-md md:text-lg rounded-lg bg-white my-3" type="text" placeholder="Your Email Address">
+                    <select class="w-full p-2 md:p-3 text-md md:text-lg rounded-lg bg-white" name="" id="">
+                        <option value="" selected disabled>Number of Trees</option>
+                        <option value="option1">10</option>
+                        <option value="option2">20</option>
+                        <option value="option3">30</option>
+                        <option value="option1">40</option>
+                        <option value="option2">50</option>
+                        <option value="option3">60</option>
+                        <option value="option1">70</option>
+                        <option value="option2">80</option>
+                        <option value="option3">90</option>
+                        <option value="option3">100</option>
+                    </select>
+                    <button class=" md:text-lg font-semibold mt-5 bg-[#FACC15] text-[#15803D] px-5 py-2 rounded-3xl w-full">Donate Now</button>
+                </form>
+            </div>
+           </section>
     </main>
+    <!-- footer section -->
+    <footer class="bg-[#14532D]">   
+        <p class="text-center text-white text-md md:text-xl p-6">© 2025 Green Earth. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
