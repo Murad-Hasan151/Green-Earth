@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Earth</title>
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- tailwind and daisyUi -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -48,19 +52,43 @@
             <h2 class="font-semibold text-2xl md:text-4xl mb-10 text-center">Choose Your Trees</h2>
             <section class="grid grid-cols-6 gap-7 ">
 
-                <aside class=" col-span-1">
+                <aside class=" col-span-1 ">
                     <h2 class="font-semibold text-2xl">Categories</h2>
                     <ul id="allCategories" class="space-y-2 mt-5 ">
-                        
+                    
                     </ul>
                 </aside>
+
+                <!-- modal -->
+                <dialog id="detail_modal" class="modal">
+                    <div class="modal-box">
+                        <div id="detailsModal">
+                            
+                        </div>
+                        <div class="modal-action">
+                            <form method="dialog">
+                                <button class="btn">Close</button>
+                            </form>
+                        </div>
+                    </div>
+                </dialog>
 
                 <section id="allCard" class="grid grid-cols-3 gap-7 col-span-4">
                    
                 </section>
 
-                <aside class="bg-white col-span-1">
-                    <h2 class="font-semibold text-2xl">Your Cart</h2>
+                <aside class="bg-white col-span-1 rounded-lg p-3">
+                    <h2 class="font-semibold text-2xl mb-3">Your Cart</h2>
+                    <div>
+                        <div id="addToCart">
+                            
+                        </div>
+                        <hr class="mb-1"> 
+                        <div class="flex justify-between items-center text-lg font-semibold">
+                            <p>Total :</p>
+                            <p><span>0</span> TK</p>
+                        </div>
+                    </div>
                 </aside>
 
             </section>
