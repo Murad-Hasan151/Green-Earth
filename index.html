@@ -24,6 +24,7 @@
                 <span>Plant a Tree</span>
             </div>
             <button class="text-normal md:text-lg font-semibold bg-[#FACC15] text-[#15803D] px-5 py-1 md:py-2 rounded-3xl">Plant a Tree</button>
+            <div id="cartbtn" class="block md:hidden"><i class="fa-solid fa-cart-shopping "></i></div>
         </div>
     </nav>
 
@@ -48,11 +49,11 @@
     <!-- main section -->
     <main>
         <!-- chose your tress section -->
-         <section class="mt-20 w-12/14 mx-auto ">
+         <section class="mt-15 md:mt-20 w-13/14 md:w-12/14 mx-auto ">
             <h2 class="font-semibold text-2xl md:text-4xl mb-10 text-center">Choose Your Trees</h2>
-            <section class="grid grid-cols-6 gap-7 ">
+            <section id="cardContainer" class="grid grid-cols-6 gap-7 ">
 
-                <aside class=" col-span-1 ">
+                <aside class="col-span-2 md:col-span-1 ">
                     <h2 class="font-semibold text-2xl">Categories</h2>
                     <ul id="allCategories" class="space-y-2 mt-5 ">
                     
@@ -73,20 +74,20 @@
                     </div>
                 </dialog>
 
-                <section id="allCard" class="grid grid-cols-3 gap-7 col-span-4">
+                <section id="allCard" class="grid grid-cols-1 md:grid-cols-3 gap-7 col-span-4">
                    
                 </section>
 
-                <aside class="bg-white col-span-1 rounded-lg p-3">
+                <aside class="bg-white col-span-1 rounded-lg p-3 hidden md:block">
                     <h2 class="font-semibold text-2xl mb-3">Your Cart</h2>
                     <div>
                         <div id="addToCart">
                             
                         </div>
-                        <hr class="mb-1"> 
+                        <hr class="mb-1">
                         <div class="flex justify-between items-center text-lg font-semibold">
-                            <p>Total :</p>
-                            <p><span>0</span> TK</p>
+                            <p>Total :</P>
+                            <P><span id="totalPrice">0</span> TK</p>
                         </div>
                     </div>
                 </aside>

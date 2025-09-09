@@ -4,6 +4,8 @@ const addToCart = document.getElementById("addToCart");
 const detailsModal = document.getElementById("detailsModal");
 
 
+let carts = [];
+
 
 const loadCategory = () => {
     const url = "https://openapi.programming-hero.com/api/categories";
@@ -20,7 +22,7 @@ const showCategory = (categories) => {
     allCategories.innerHTML = "";
     categories.forEach(cat => {
         allCategories.innerHTML += `
-            <li class="text-lg hover:bg-[#03cd4d] hover:text-white px-3 py-1 rounded-md cursor-pointer">${cat.category_name}</li>
+            <li class="text-sm md:text-lg hover:bg-[#03cd4d] hover:text-white px-3 py-1 rounded-md cursor-pointer">${cat.category_name}</li>
         `;
     })
 }
@@ -64,7 +66,7 @@ document.getElementById("allCategories").addEventListener("click", (e) => {
         li.classList.remove("active", "bg-[#15803D]", "text-white");
     });
     e.target.classList.add("active", "bg-[#15803D]", "text-white");
-    
+    showLoading();
     loadCategoryById(categoryName);
   }
 });
@@ -87,7 +89,7 @@ const showCategoryById = (trees) => {
         allCard.innerHTML += `
                     <div id="${tree.id}" class="p-3 bg-white rounded-lg"> 
                         <img class="h-80 w-full rounded-lg" src="${tree.image}" alt="">
-                        <h4 class="font-semibold text-lg mt-3">${tree.name}</h4>
+                        <h4 onclick="detail_modal.showModal()" class="font-semibold text-lg mt-3 hover:cursor-pointer">${tree.name}</h4>
                         <p class=" my-1">${tree.description}</p>
                         <div class="flex justify-between items-center mt-2">
                             <button class="bg-[#DCFCE7] text-[#15803D] font-semibold px-3 py-1 rounded-3xl">${tree.category}</button>
@@ -106,7 +108,11 @@ document.getElementById("allCard").addEventListener("click", (e) => {
         detailsModal.innerHTML = "";
         handleDetails(e)
     }
+    if(e.target.innerText === "Add to Cart"){
+        handleAddToCart(e)
+    }
 })
+
 const handleDetails = (e) => {
     const id = e.target.parentNode.id;
     fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
@@ -117,7 +123,7 @@ const handleDetails = (e) => {
 const showDetails = (detail) => {
     detailsModal.innerHTML = `
         <h2 class="font-bold text-3xl">${detail.name}</h2>
-        <img class="h-120 rounded-lg w-full my-3" src="${detail.image}" alt="">
+        <img class="h-80 md:h-120 rounded-lg w-full my-3" src="${detail.image}" alt="">
         <h2 class="text-xl my-3"><span class="font-semibold text-xl">Category :</span> ${detail.category}</h2>                         
         <p class="text-xl"><span class="font-semibold text-xl">Price :</span> ${detail.price} TK</p>
         <p class="text-md mt-3"><span class="font-semibold text-xl">Description :</span> ${detail.description}</p>
@@ -125,7 +131,50 @@ const showDetails = (detail) => {
 }
 
 
+const handleAddToCart = (e) => {
+    const name = e.target.parentNode.children[1].innerText;
+    const price = parseInt(e.target.parentNode.children[3].children[1].children[0].innerText);
+    const alreadyExist = carts.some((cart) => cart.name === name);
+    if(!alreadyExist){
+      carts.push({
+        name: name,
+        price: price,
+      });
+      showCarts(carts);
+      alert(`Tree has been added to the cart`);
+    }
+}
+const showCarts = (carts) => {
+    addToCart.innerHTML = "";
+    carts.forEach(cart => {
+        addToCart.innerHTML += `
+            <div class="flex justify-between items-center p-2 rounded-lg mb-3 bg-[#F0FDF4]">
+                                <div>
+                                    <h2 class="font-semibold text-lg">${cart.name}</h2>
+                                    <p class="font-semibold text-lg">${cart.price} TK</p>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-xmark text-red-600 cross"></i>
+                                </div>
+                            </div>
+        `;
+    })
+    const total = carts.reduce((sum, item) => sum + item.price, 0);
+    document.getElementById("totalPrice").innerText = total;
+}
+addToCart.addEventListener("click", (e) => {
+  if (e.target.classList.contains("cross")) {
+    const name = e.target.parentNode.parentNode.children[0].children[0].innerText;
+    carts = carts.filter((cart) => cart.name !== name);
+    showCarts(carts);
+  }
+});
 
+const showLoading = () => {
+    allCard.innerHTML = `
+      <p class="text-center font-bold col-span-3 "><span class="loading loading-spinner loading-xl"></span></p>
+  `;
+};
 
 
 loadCategory()
